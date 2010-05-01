@@ -29,7 +29,7 @@
 #include "ppp_echo_mon.h"
 
 static void help(FILE *out, const char *name) {
-			fprintf(out, "Usage: %s [-n count] [-t timeout] <source interface> <source ip> <ppp device>\n", name);
+	fprintf(out, "Usage: %s [-n count] [-t timeout] <source interface> <source ip> <ppp device>\n", name);
 }
 
 int main(int argc, char *argv[]) {
@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
 	struct group_source_req gsreq;
 	char buf[1024];
 
-	while ((opt = getopt(argc, argv, "hn:t:")) != -1) {
+	while ((opt = getopt(argc, argv, "hn:t:m:")) != -1) {
 		switch (opt) {
 		case 'n':
 			count = atoi(optarg);
