@@ -45,6 +45,8 @@ int main(int argc, char *argv[]) {
 	struct sockaddr_in6 rcv;
 	socklen_t rcvlen = sizeof(rcv);
 	struct group_source_req gsreq;
+	u_int64_t c, hash = 0;
+	char *tmp;
 	char buf[1024];
 
 	while ((opt = getopt(argc, argv, "hn:t:m:")) != -1) {
@@ -107,6 +109,17 @@ int main(int argc, char *argv[]) {
 	cerror("Invalid group", !inet_pton(AF_INET6, GROUP, &dst.sin6_addr));
 	dst.sin6_port = htons(DPORT);
 	dst.sin6_scope_id = ifidx;
+	tmp = device;
+	while ((c = *tmp++))
+		hash = c + (hash << 6) + (hash << 16) - hash;
+	dst.sin6_addr.__in6_u.__u6_addr8[4] = (hash >> 56) & 0xFF;
+	dst.sin6_addr.__in6_u.__u6_addr8[5] = (hash >> 48) & 0xFF;
+	dst.sin6_addr.__in6_u.__u6_addr8[6] = (hash >> 40) & 0xFF;
+	dst.sin6_addr.__in6_u.__u6_addr8[7] = (hash >> 32) & 0xFF;
+	dst.sin6_addr.__in6_u.__u6_addr8[8] = (hash >> 24) & 0xFF;
+	dst.sin6_addr.__in6_u.__u6_addr8[9] = (hash >> 16) & 0xFF;
+	dst.sin6_addr.__in6_u.__u6_addr8[10] = (hash >> 8) & 0xFF;
+	dst.sin6_addr.__in6_u.__u6_addr8[11] = hash & 0xFF;
 
 	cerror("Failed to set SO_REUSEADDR", setsockopt(s, SOL_SOCKET, SO_REUSEADDR, &one, sizeof(one)));
 	cerror("Failed to bind destination port", bind(s, (struct sockaddr*)&dst, sizeof(dst)));
