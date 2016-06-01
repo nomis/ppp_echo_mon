@@ -1,0 +1,18 @@
+Source: ppp-echo-mon
+Section: misc
+Priority: optional
+Maintainer: Simon Arlott <ubuntu@sa.me.uk>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.6
+
+Package: ppp-echo-mon
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: PPP LCP Echo monitor
+ Monitors the LCP Echo pings on a PPP link.
+
+Package: ppp-echo-mon-dbg
+Architecture: any
+Depends: ppp-echo-mon (= ${binary:Version}), ${misc:Depends}
+Description: debugging symbols for ppp-echo-mon
+ This package contains the debugging symbols for ppp-echo-mon

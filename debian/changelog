@@ -1,0 +1,5 @@
+ppp-echo-mon (0-1) xenial; urgency=medium
+
+  * Initial release.
+
+ -- Simon Arlott <ubuntu@sa.me.uk>  Wed, 01 Jun 2016 21:18:10 +0100

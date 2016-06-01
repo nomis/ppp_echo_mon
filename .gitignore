@@ -1,1 +1,8 @@
 ppp_echo_mon
+debian/ppp-echo-mon.debhelper.log
+debian/ppp-echo-mon.substvars
+debian/ppp-echo-mon/
+debian/ppp-echo-mon-dbg.debhelper.log
+debian/ppp-echo-mon-dbg.substvars
+debian/ppp-echo-mon-dbg/
+debian/files
