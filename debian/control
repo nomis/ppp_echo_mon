@@ -2,8 +2,8 @@ Source: ppp-echo-mon
 Section: misc
 Priority: optional
 Maintainer: Simon Arlott <ubuntu@sa.me.uk>
-Build-Depends: debhelper (>= 9)
-Standards-Version: 3.9.6
+Build-Depends: debhelper (>= 12)
+Standards-Version: 4.1.4
 
 Package: ppp-echo-mon
 Architecture: any
